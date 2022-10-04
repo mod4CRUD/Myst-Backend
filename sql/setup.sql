@@ -1,10 +1,8 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS todos;
-
-DROP TABLE IF EXISTS tasks;
-
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS games CASCADE;
+DROP TABLE IF EXISTS favorites CASCADE;
 
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -14,10 +12,23 @@ CREATE TABLE users (
   last_name VARCHAR NOT NULL
 );
 
-CREATE TABLE todos (
+CREATE TABLE games (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  img VARCHAR,
+  genre VARCHAR,
+  title VARCHAR,
   user_id BIGINT,
-  completed BOOLEAN NOT NULL DEFAULT(FALSE),
   description VARCHAR,
   FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE favorites (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  is_fav BOOLEAN NOT NULL DEFAULT(false),
+  catagory VARCHAR,
+  img VARCHAR,  
+  title VARCHAR,
+  games_id BIGINT,
+  description VARCHAR,
+  FOREIGN KEY (games_id) REFERENCES games(id)
 );
