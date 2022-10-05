@@ -57,7 +57,14 @@ describe('backend route testing', () => {
       ...newGame,
     });
   });
-        
+  
+  
+  it('#DELETE /Games/:id should delete a game from the list', async () => {
+    const resp = await request(app).delete('/api/v1/games/1');
+    expect(resp.status).toBe(200);
+    const GameResp = await request(app).get('/api/v1/games/1');
+    expect(GameResp.status).toBe(404);
+  });
 
 
 
