@@ -32,3 +32,16 @@ CREATE TABLE favorites (
   description VARCHAR,
   FOREIGN KEY (games_id) REFERENCES games(id)
 );
+
+
+
+INSERT INTO games (img, genre, title, description)
+VALUES 
+('https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg/220px-Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg',
+'FIRST PERSON SHOOTER',
+'HALO COMBAT EVOLVED',
+'MASTER CHIEF SAVING THE HUMAN RACE');
+
+INSERT INTO users (email, password_hash, first_name, last_name)
+VALUES 
+ ('example@admin.com', 'khfahfiouhf', 'daniel', 'stan')
