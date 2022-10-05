@@ -42,10 +42,38 @@ describe('backend route testing', () => {
       description: expect.any(String)
     });
   });
+
+  it('#POST /Games should add to game to catalog', async () => {
+    const newGame = {
+      img:'https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw2/meta-images/reveal/mw2-reveal-meta-share.jpg',
+      genre:'FIRST PERSON SHOOTER',
+      title:'CALL OF DUTY MODERN WARFARE',
+      description:'FAST PACE WAR'
+    };
+    const resp = await request(app).post('/api/v1/games').send(newGame);
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({ 
+      id: expect.any(String),
+      ...newGame,
+    });
+  });
+        
+
+
+
+
   afterAll(() => {
     pool.end();
   });
 });
+
+
+
+
+
+
+
+
 
 
 
