@@ -34,13 +34,18 @@ CREATE TABLE favorites (
 );
 
 
-
+-- game titels 
 INSERT INTO games (img, genre, title, description)
 VALUES 
 ('https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg/220px-Halo_-_Combat_Evolved_%28XBox_version_-_box_art%29.jpg',
 'FIRST PERSON SHOOTER',
 'HALO COMBAT EVOLVED',
-'MASTER CHIEF SAVING THE HUMAN RACE');
+'MASTER CHIEF SAVING THE HUMAN RACE'),
+
+('https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Gears_of_war_cover_art.jpg/220px-Gears_of_war_cover_art.jpg',
+ 'THIRD PERSON SHOOTER',
+ 'GEARS OF WAR',
+ 'LAST DITCH ATTEMPT TO SAVE HUMANITY FROM MONSTERS');
 
 INSERT INTO users (email, password_hash, first_name, last_name)
 VALUES 
