@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 
+
 describe('backend route testing', () => {
   beforeEach(() => {
     return setup(pool);
@@ -29,7 +30,27 @@ describe('backend route testing', () => {
       }
     ]);
   });
+
+  it('#GET /Games:id should return a single game', async () => {
+    const resp = await request(app).get('/api/v1/games/1');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({ 
+      id:'1',
+      img: expect.any(String),
+      genre: expect.any(String),
+      title: 'HALO COMBAT EVOLVED',
+      description: expect.any(String)
+    });
+  });
   afterAll(() => {
     pool.end();
   });
 });
+
+
+
+
+
+
+
+
