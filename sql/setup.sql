@@ -11,7 +11,7 @@ CREATE TABLE users (
   first_name VARCHAR NOT NULL,
   last_name VARCHAR NOT NULL
 );
-
+-- table for games 
 CREATE TABLE games (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   img VARCHAR,
@@ -21,7 +21,7 @@ CREATE TABLE games (
   description VARCHAR,
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
+-- table for favorite game and catagorys
 CREATE TABLE favorites (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   is_fav BOOLEAN NOT NULL DEFAULT(false),
