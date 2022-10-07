@@ -7,9 +7,7 @@ DROP TABLE IF EXISTS favorites CASCADE;
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   email VARCHAR,
-  password_hash VARCHAR NOT NULL,
-  first_name VARCHAR,
-  last_name VARCHAR
+  password_hash VARCHAR NOT NULL
 );
 -- table for games 
 CREATE TABLE games (
@@ -47,6 +45,6 @@ VALUES
  'GEARS OF WAR',
  'LAST DITCH ATTEMPT TO SAVE HUMANITY FROM MONSTERS');
 
-INSERT INTO users (email, password_hash, first_name, last_name)
+INSERT INTO users (email, password_hash)
 VALUES 
- ('example@admin.com', 'khfahfiouhf', 'daniel', 'stan')
+ ('example@admin.com', 'khfahfiouhf')
