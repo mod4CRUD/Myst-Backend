@@ -47,4 +47,7 @@ VALUES
 
 INSERT INTO users (email, password_hash)
 VALUES 
- ('example@admin.com', 'khfahfiouhf')
+ ('example@admin.com', '123456789')
+
+
+ 
