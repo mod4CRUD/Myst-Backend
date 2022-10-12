@@ -25,3 +25,35 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
 | `/api/v1/users/me/`      | `GET`       | None                                                                                   | Returns current user                               |
 | `/api/v1/users/`         | `GET`       | None                                                                                   | Authorized endpoint - returns all users for admin. |
 | `api/v1/users/sessions/` | `DELETE`    | None                                                                                   | Deletes a user session                             |
+
+
+  // it('/users should return a 200 if user is admin', async () => {
+  //   const [agent] = await registerAndLogin({ email: 'admin' });
+  //   const res = await agent.get('/api/v1/users/');
+  //   expect(res.status).toEqual(200);
+  // });
+
+    it('/protected should return the current user if authenticated', async () => {
+    const [agent] = await registerAndLogin();
+    const res = await agent.get('/api/v1/users/me');
+    expect(res.status).toEqual(200);
+  });
+
+    it('/users should return 200 if user is admin', async () => {
+    const agent = request.agent();
+
+    // create a new user
+    await agent.post('/api/v1/users').send({
+      email: 'admin',
+      password: '1234',
+    });
+    // sign in the user
+    const user = await agent
+      .post('/api/v1/users/sessions')
+      .send({ email: 'admin', password: '1234' });
+    
+    // const [agent] = await registerAndLogin({ email: 'admin' });
+    const res = await agent.get('/api/v1/users');
+    // console.log(res.body);
+    expect(res.status).toEqual(200);
+  });
