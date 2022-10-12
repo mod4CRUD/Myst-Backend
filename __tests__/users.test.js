@@ -39,7 +39,7 @@ describe('user routes', () => {
     pool.end();
   });
 
-  it.skip('creates a new user', async () => {
+  it('creates a new user', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { email } = mockUser;
     expect(res.body).toEqual({
@@ -84,11 +84,11 @@ describe('user routes', () => {
     // sign in the user
     const user = await agent
       .post('/api/v1/users/sessions')
-      .send({ email: 'chadwick', password: '1234' });
+      .send({ email: 'admin', password: '1234' });
     
     // const [agent] = await registerAndLogin({ email: 'admin' });
     const res = await agent.get('/api/v1/users');
-    console.log(res.body);
+    // console.log(res.body);
     expect(res.status).toEqual(200);
   });
 
