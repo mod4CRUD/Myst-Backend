@@ -10,7 +10,7 @@ describe('backend route testing', () => {
     return setup(pool);
   });
 
-  it.skip('#GET /Games should return a list of games', async () => {
+  it('#GET /Games should return a list of games', async () => {
     const resp = await request(app).get('/api/v1/games');
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual([
@@ -31,7 +31,7 @@ describe('backend route testing', () => {
     ]);
   });
 
-  it.skip('#GET /Games:id should return a single game', async () => {
+  it('#GET /Games:id should return a single game', async () => {
     const resp = await request(app).get('/api/v1/games/1');
     expect(resp.status).toBe(200);
     expect(resp.body).toEqual({ 
@@ -43,7 +43,7 @@ describe('backend route testing', () => {
     });
   });
 
-  it.skip('#POST /Games should add to game to catalog', async () => {
+  it('#POST /Games should add to game to catalog', async () => {
     const newGame = {
       img:'https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/mw2/meta-images/reveal/mw2-reveal-meta-share.jpg',
       genre:'FIRST PERSON SHOOTER',
@@ -59,7 +59,7 @@ describe('backend route testing', () => {
   });
   
   
-  it.skip('#DELETE /Games/:id should delete a game from the list', async () => {
+  it('#DELETE /Games/:id should delete a game from the list', async () => {
     const resp = await request(app).delete('/api/v1/games/1');
     expect(resp.status).toBe(200);
     const GameResp = await request(app).get('/api/v1/games/1');
